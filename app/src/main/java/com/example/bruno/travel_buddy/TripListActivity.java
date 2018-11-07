@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class TripList extends AppCompatActivity {
+public class TripListActivity extends AppCompatActivity {
 
     RecyclerView rv_list;
     RecyclerView.Adapter adapter_list;

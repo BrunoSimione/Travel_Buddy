@@ -1,6 +1,7 @@
 package com.example.bruno.travel_buddy;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -21,6 +22,11 @@ public class Trip {
         this.date_start = date_start;
         this.date_end = date_end;
         this.budget_initial = budget_initial;
+        this.cost_list = new ArrayList<>();
+        this.place_list = new ArrayList<>();
+
+        createDummyCost(3);
+        createDummyPlaces(5);
     }
 
 
@@ -99,9 +105,31 @@ public class Trip {
         return total_cost;
     }
 
+    public double getRemainingBudget(){
+        return this.budget_initial - getTotalCost();
+    }
+
+    public String getPlacesInLine(){
+        String line = "";
+        for(int i = 0; i < this.place_list.size(); i++){
+                line += this.place_list.get(i).getTitle() + "\n";
+        }
+        System.out.println(line);
+        return line;
+    }
+
     public void createDummyCost(int index){
         for(int i=1; i<=index; i++){
-            //this.cost_list.add(new Cost("Cost "+i, new Date(), 100 + i, "Restaurant", 2, ""));
+            Cost c = new Cost("Cost" + i, "08-11-2018", 120.00, "Restaurant", 2, "");
+            this.cost_list.add(c);
+        }
+    }
+
+    public void createDummyPlaces(int index){
+        for(int i=1; i<=index; i++){
+            //Cost c = new Cost("Cost" + i, "08-11-2018", 120.00, "Restaurant", 2, "");
+            Place p = new Place("Place "+ i, "01-11-2018", "Restaurant", "", "", i%2==0 ? true : false);
+            this.place_list.add(p);
         }
     }
 }

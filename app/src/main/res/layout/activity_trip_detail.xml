@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/tv_trip_detail_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Trip Details"
+        android:textSize="26dp"
+        android:gravity="center"/>
+    <TextView
+        android:id="@+id/tv_trip_detail_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Date"
+        android:textSize="22dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/tv_trip_detail_title"/>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/cl_budget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_trip_detail_date"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/tv_trip_detail_label_budget_initial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Initial Budget"
+            android:gravity="center"
+
+            app:layout_constraintRight_toLeftOf="@id/tv_trip_detail_value_budget_initial"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+        <TextView
+            android:id="@+id/tv_trip_detail_value_budget_initial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Initial Value"
+            app:layout_constraintLeft_toRightOf="@id/tv_trip_detail_label_budget_initial"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_trip_detail_label_budget_actual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Actual Cost"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/tv_trip_detail_label_budget_initial"
+            app:layout_constraintRight_toLeftOf="@id/tv_trip_detail_value_budget_actual"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+        <TextView
+            android:id="@+id/tv_trip_detail_value_budget_actual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Actual Value"
+            app:layout_constraintTop_toBottomOf="@id/tv_trip_detail_value_budget_initial"
+            app:layout_constraintLeft_toRightOf="@id/tv_trip_detail_label_budget_actual"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_trip_detail_label_budget_remaining"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remaining Budget"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/tv_trip_detail_label_budget_actual"
+            app:layout_constraintRight_toLeftOf="@id/tv_trip_detail_value_budget_remaining"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+        <TextView
+            android:id="@+id/tv_trip_detail_value_budget_remaining"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Remaining Value"
+            app:layout_constraintTop_toBottomOf="@id/tv_trip_detail_value_budget_actual"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/tv_trip_detail_label_budget_actual"/>
+    </android.support.constraint.ConstraintLayout>
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/cl_budget_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/cl_budget"
+        android:layout_marginTop="20dp">
+
+        <Button
+            android:id="@+id/btn_add_budget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="@+id/cl_budget_buttons"
+            app:layout_constraintRight_toLeftOf="@+id/btn_details_budget"
+            android:text="ADD"/>
+
+        <Button
+            android:id="@+id/btn_details_budget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="@+id/cl_budget_buttons"
+            app:layout_constraintLeft_toRightOf="@id/btn_add_budget"
+            android:text="Detail"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tv_label_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Locations (7/10)"
+        app:layout_constraintTop_toBottomOf="@id/cl_budget_buttons"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/tv_list_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Location1"
+        android:lines="5"
+        app:layout_constraintTop_toBottomOf="@id/tv_label_location"
+        android:layout_marginTop="20dp" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/cl_locations_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tv_list_location"
+        android:layout_marginTop="20dp">
+
+        <Button
+            android:id="@+id/btn_add_locations"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="@+id/cl_locations_buttons"
+            app:layout_constraintRight_toLeftOf="@+id/btn_details_locations"
+            android:text="ADD"/>
+
+        <Button
+            android:id="@+id/btn_details_locations"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="@+id/cl_locations_buttons"
+            app:layout_constraintLeft_toRightOf="@id/btn_add_locations"
+            android:text="Detail"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>

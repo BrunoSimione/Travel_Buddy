@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Cost {
     private String title;
-    private Date date;
+    private String date;
     private double amount;
     private String category;
     private int stars;
@@ -13,7 +13,7 @@ public class Cost {
     public Cost() {
     }
 
-    public Cost(String title, Date date, double amount, String category, int stars, String details) {
+    public Cost(String title, String date, double amount, String category, int stars, String details) {
         this.title = title;
         this.date = date;
         this.amount = amount;
@@ -30,11 +30,11 @@ public class Cost {
         this.title = title;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

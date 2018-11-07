@@ -2,6 +2,7 @@ package com.example.bruno.travel_buddy;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class TripListAdapter extends RecyclerView.Adapter<TripListAdapter.ViewHolder> {
+public class TripListAdapter extends RecyclerView.Adapter<TripListAdapter.ViewHolder>{
     TripListEngine listEngine;
 
     public TripListAdapter(TripListEngine listEngine) {
@@ -36,9 +37,10 @@ public class TripListAdapter extends RecyclerView.Adapter<TripListAdapter.ViewHo
             @Override
             public void onClick(View view) {
                 int itemPosition = viewHolder.getAdapterPosition();
-                Toast.makeText(viewHolder.itemView.getContext(), "Item Clicked: " + itemPosition, Toast.LENGTH_SHORT).show();
-                //Intent intent = new Intent(viewHolder.itemView.getContext() , yourActivity.Class);
-                //startActivity(intent);
+                //Toast.makeText(viewHolder.itemView.getContext(), "Item Clicked: " + itemPosition, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(viewHolder.itemView.getContext() , TripDetailActivity.class);
+                intent.putExtra("TRIP_ID", itemPosition);
+                viewHolder.itemView.getContext().startActivity(intent);
             }
         });
 
