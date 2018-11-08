@@ -14,6 +14,7 @@ public class Trip {
     private double budget_initial;
     private List<Cost> cost_list;
     private List<Place> place_list;
+    //abc
 
     public Trip(String title, String location, String details, String date_start, String date_end, double budget_initial) {
         this.title = title;
