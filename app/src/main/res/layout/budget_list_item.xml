@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -13,7 +15,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="No Date"
-            android:textSize="16dp"
+            android:textSize="24dp"
+            android:layout_marginRight="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
             />
 
         <TextView
@@ -22,6 +26,10 @@
             android:layout_height="wrap_content"
             android:hint="Trip Name"
             android:textSize="24dp"
+            android:maxLength="20"
+            android:layout_marginRight="10dp"
+            app:layout_constraintLeft_toRightOf="@id/tv_budget_date"
+            app:layout_constraintRight_toLeftOf="@id/tv_budget_value"
             />
 
         <TextView
@@ -30,7 +38,8 @@
             android:layout_height="wrap_content"
             android:hint="Trip Value"
             android:textSize="24dp"
+            app:layout_constraintRight_toRightOf="parent"
             />
-    </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
 
 </LinearLayout>

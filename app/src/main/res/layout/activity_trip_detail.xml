@@ -104,6 +104,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintRight_toRightOf="@+id/cl_budget_buttons"
             app:layout_constraintLeft_toRightOf="@id/btn_add_budget"
+            android:onClick="callBudgetDetailsActivty"
             android:text="Detail"/>
 
     </android.support.constraint.ConstraintLayout>

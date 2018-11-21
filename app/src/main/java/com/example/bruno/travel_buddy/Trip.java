@@ -1,11 +1,15 @@
 package com.example.bruno.travel_buddy;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Trip {
+public class Trip implements Parcelable{
+    private int id;
     private String title;
     private String location;
     private String details;
@@ -14,9 +18,9 @@ public class Trip {
     private double budget_initial;
     private List<Cost> cost_list;
     private List<Place> place_list;
-    //abc
 
-    public Trip(String title, String location, String details, String date_start, String date_end, double budget_initial) {
+    public Trip(int id, String title, String location, String details, String date_start, String date_end, double budget_initial) {
+        this.id = id;
         this.title = title;
         this.location = location;
         this.details = details;
@@ -30,6 +34,37 @@ public class Trip {
         createDummyPlaces(5);
     }
 
+    protected Trip(Parcel in) {
+        id = in.readInt();
+        title = in.readString();
+        location = in.readString();
+        details = in.readString();
+        date_start = in.readString();
+        date_end = in.readString();
+        budget_initial = in.readDouble();
+        cost_list = in.createTypedArrayList(Cost.CREATOR);
+        place_list = in.createTypedArrayList(Place.CREATOR);
+    }
+
+    public static final Creator<Trip> CREATOR = new Creator<Trip>() {
+        @Override
+        public Trip createFromParcel(Parcel in) {
+            return new Trip(in);
+        }
+
+        @Override
+        public Trip[] newArray(int size) {
+            return new Trip[size];
+        }
+    };
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
@@ -121,16 +156,34 @@ public class Trip {
 
     public void createDummyCost(int index){
         for(int i=1; i<=index; i++){
-            Cost c = new Cost("Cost" + i, "08-11-2018", 120.00, "Restaurant", 2, "");
+            Cost c = new Cost("Cost" + i, "08-11-2018", 120.00 + i, "Restaurant", 2, "");
             this.cost_list.add(c);
         }
     }
 
     public void createDummyPlaces(int index){
         for(int i=1; i<=index; i++){
-            //Cost c = new Cost("Cost" + i, "08-11-2018", 120.00, "Restaurant", 2, "");
+            ////Cost c = new Cost("Cost" + i, "08-11-2018", 120.00, "Restaurant", 2, "");
             Place p = new Place("Place "+ i, "01-11-2018", "Restaurant", "", "", i%2==0 ? true : false);
             this.place_list.add(p);
         }
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(title);
+        dest.writeString(location);
+        dest.writeString(details);
+        dest.writeString(date_start);
+        dest.writeString(date_end);
+        dest.writeDouble(budget_initial);
+        dest.writeTypedList(cost_list);
+        dest.writeTypedList(place_list);
     }
 }

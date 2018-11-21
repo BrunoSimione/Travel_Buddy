@@ -8,9 +8,11 @@
         android:id="@+id/tv_budget_detail_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Trip Details"
+        android:text="Budget Details"
         android:textSize="26dp"
-        android:gravity="center"/>
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/cl_budget_budget"
@@ -81,6 +83,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="History"
+        android:layout_marginTop="10dp"
+        android:textSize="18dp"
+        android:gravity="center"
         app:layout_constraintTop_toBottomOf="@+id/cl_budget_budget"
         />
     <android.support.v7.widget.RecyclerView

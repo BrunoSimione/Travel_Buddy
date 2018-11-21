@@ -39,7 +39,7 @@ public class TripListAdapter extends RecyclerView.Adapter<TripListAdapter.ViewHo
                 int itemPosition = viewHolder.getAdapterPosition();
                 //Toast.makeText(viewHolder.itemView.getContext(), "Item Clicked: " + itemPosition, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(viewHolder.itemView.getContext() , TripDetailActivity.class);
-                intent.putExtra("TRIP_ID", itemPosition);
+                intent.putExtra("TRIP", listEngine.getTrip(itemPosition));
                 viewHolder.itemView.getContext().startActivity(intent);
             }
         });
@@ -56,6 +56,7 @@ public class TripListAdapter extends RecyclerView.Adapter<TripListAdapter.ViewHo
         TextView tvTripName;
         TextView tvTripDate;
         TextView tvTripLocation;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
