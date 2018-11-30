@@ -99,7 +99,7 @@ public class Place implements Parcelable{
     }
 
     public boolean isVisited() {
-        return visited;
+        return this.visited;
     }
 
     public void setVisited(boolean visited) {

@@ -1,40 +1,44 @@
 package com.example.bruno.travel_buddy;
 
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
-
 import java.util.List;
 
-public class BudgetListAdapter extends RecyclerView.Adapter<BudgetListAdapter.ViewHolder>{
+public class PlaceListAdapter extends RecyclerView.Adapter<PlaceListAdapter.ViewHolder> implements Filterable{
     //TripListEngine listEngine;
     //int trip_id;
-    List<Cost> costList;
+    List<Place> places;
+    List<Place> filterList;
+    CustomFilter filter;
 
-    public BudgetListAdapter(List<Cost> costs) {
+    public PlaceListAdapter(List<Place> places) {
         //this.listEngine = listEngine;
-        this.costList = costs;
+        this.places = places;
+        this.filterList = places;
     }
 
     @NonNull
     @Override
-    public BudgetListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public PlaceListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         //create a view, inflate it in a vh, return the vh
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.budget_list_item, viewGroup,false);
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.place_list_item, viewGroup,false);
         ViewHolder vh = new ViewHolder(v);
         return vh;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final BudgetListAdapter.ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull final PlaceListAdapter.ViewHolder viewHolder, int i) {
         //Trip trip = listEngine.getTrip(trip_id);
-        viewHolder.tvBudgetName.setText(costList.get(i).getTitle());
-        viewHolder.tvBudgetDate.setText(costList.get(i).getDate());
-        viewHolder.tvBudgetValue.setText(Double.toString(costList.get(i).getAmount()));
+        viewHolder.tvPlaceName.setText(places.get(i).getTitle());
+        viewHolder.tvPlaceDate.setText(places.get(i).getDate());
+        viewHolder.cbPlaceVisited.setChecked(places.get(i).isVisited());
 
         /*
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -53,19 +57,27 @@ public class BudgetListAdapter extends RecyclerView.Adapter<BudgetListAdapter.Vi
 
     @Override
     public int getItemCount() {
-        return costList.size();
+        return places.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        if(filter==null){
+            filter = new CustomFilter(filterList, this);
+        }
+        return filter;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvBudgetName;
-        TextView tvBudgetDate;
-        TextView tvBudgetValue;
+        TextView tvPlaceName;
+        TextView tvPlaceDate;
+        CheckBox cbPlaceVisited;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvBudgetName = itemView.findViewById(R.id.tv_budget_name);
-            tvBudgetDate = itemView.findViewById(R.id.tv_budget_date);
-            tvBudgetValue= itemView.findViewById(R.id.tv_budget_value);
+            tvPlaceName = itemView.findViewById(R.id.tv_place_name);
+            tvPlaceDate = itemView.findViewById(R.id.tv_place_date);
+            cbPlaceVisited= itemView.findViewById(R.id.cb_place_visited);
         }
     }
 }

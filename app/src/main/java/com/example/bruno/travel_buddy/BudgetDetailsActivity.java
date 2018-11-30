@@ -1,13 +1,16 @@
 package com.example.bruno.travel_buddy;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class BudgetDetailsActivity extends AppCompatActivity{
+    static final int CREATE_BUDGET_REQUEST = 1;
     private Trip trip;
     TextView title;
     TextView initial_cost;
@@ -47,8 +50,48 @@ public class BudgetDetailsActivity extends AppCompatActivity{
         //engine_list = new TripListEngine();
         //engine_list.createDummyData(10);
         //engine_list.createDummyData2(5);
-        adapter_list = new BudgetListAdapter(trip);
+        adapter_list = new BudgetListAdapter(trip.getCost_list());
         rv_budget_list.setAdapter(adapter_list);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("TRIP", trip);
+        Intent mIntent = new Intent();
+        mIntent.putExtras(bundle);
+        setResult(RESULT_OK, mIntent);
+        super.onBackPressed();
+    }
+
+    public void callBudgetCreateActivity(View v){
+        Intent intent = new Intent(v.getContext() , NewBudgetActivity.class);
+        intent.putExtra("TRIP", trip);
+        startActivityForResult(intent, CREATE_BUDGET_REQUEST);
+        //startActivity(intent);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Check which request we're responding to
+        if (requestCode == CREATE_BUDGET_REQUEST) {
+            // Make sure the request was successful
+            if (resultCode == RESULT_OK) {
+                trip = data.getParcelableExtra("TRIP");
+                refreshData();
+            }
+        }
+    }
+
+    public void refreshData(){
+        initial_cost.setText(String.valueOf(trip.getBudget_initial()));
+        actual_cost.setText(String.valueOf(trip.getTotalCost()));
+        remaining_cost.setText(String.valueOf(trip.getRemainingBudget()));
+
+        adapter_list = new BudgetListAdapter(trip.getCost_list());
+        rv_budget_list.setAdapter(adapter_list);
+
+        //rv_budget_list.setAdapter(adapter_list);
     }
 
 

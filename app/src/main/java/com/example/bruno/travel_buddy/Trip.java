@@ -31,7 +31,7 @@ public class Trip implements Parcelable{
         this.place_list = new ArrayList<>();
 
         createDummyCost(3);
-        createDummyPlaces(5);
+        createDummyPlaces(3);
     }
 
     protected Trip(Parcel in) {
@@ -152,6 +152,16 @@ public class Trip implements Parcelable{
         }
         System.out.println(line);
         return line;
+    }
+
+    public int countPlacesVisited(){
+        int count = 0;
+        for(int i = 0; i < this.place_list.size(); i++){
+            if(this.place_list.get(i).isVisited()){
+                count++;
+            }
+        }
+        return count;
     }
 
     public void createDummyCost(int index){

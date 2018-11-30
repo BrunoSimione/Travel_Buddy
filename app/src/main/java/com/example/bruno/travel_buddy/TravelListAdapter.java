@@ -1,6 +1,5 @@
 package com.example.bruno.travel_buddy;
 
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,21 +7,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.List;
-
-public class BudgetListAdapter extends RecyclerView.Adapter<BudgetListAdapter.ViewHolder>{
+public class TravelListAdapter extends RecyclerView.Adapter<TravelListAdapter.ViewHolder>{
     //TripListEngine listEngine;
     //int trip_id;
-    List<Cost> costList;
+    Trip trip;
 
-    public BudgetListAdapter(List<Cost> costs) {
+    public TravelListAdapter(Trip trip) {
         //this.listEngine = listEngine;
-        this.costList = costs;
+        this.trip = trip;
     }
 
     @NonNull
     @Override
-    public BudgetListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public TravelListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         //create a view, inflate it in a vh, return the vh
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.budget_list_item, viewGroup,false);
         ViewHolder vh = new ViewHolder(v);
@@ -30,11 +27,11 @@ public class BudgetListAdapter extends RecyclerView.Adapter<BudgetListAdapter.Vi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final BudgetListAdapter.ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull final TravelListAdapter.ViewHolder viewHolder, int i) {
         //Trip trip = listEngine.getTrip(trip_id);
-        viewHolder.tvBudgetName.setText(costList.get(i).getTitle());
-        viewHolder.tvBudgetDate.setText(costList.get(i).getDate());
-        viewHolder.tvBudgetValue.setText(Double.toString(costList.get(i).getAmount()));
+        viewHolder.tvBudgetName.setText(trip.getCost_list().get(i).getTitle());
+        viewHolder.tvBudgetDate.setText(trip.getCost_list().get(i).getDate());
+        viewHolder.tvBudgetValue.setText(Double.toString(trip.getCost_list().get(i).getAmount()));
 
         /*
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -53,7 +50,7 @@ public class BudgetListAdapter extends RecyclerView.Adapter<BudgetListAdapter.Vi
 
     @Override
     public int getItemCount() {
-        return costList.size();
+        return trip.getCost_list().size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

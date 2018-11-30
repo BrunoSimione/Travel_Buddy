@@ -96,7 +96,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toLeftOf="@+id/cl_budget_buttons"
             app:layout_constraintRight_toLeftOf="@+id/btn_details_budget"
-            android:text="ADD"/>
+            android:text="ADD"
+            android:onClick="callBudgetCreateActivity"/>
 
         <Button
             android:id="@+id/btn_details_budget"
@@ -104,7 +105,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintRight_toRightOf="@+id/cl_budget_buttons"
             app:layout_constraintLeft_toRightOf="@id/btn_add_budget"
-            android:onClick="callBudgetDetailsActivty"
+            android:onClick="callBudgetDetailsActivity"
             android:text="Detail"/>
 
     </android.support.constraint.ConstraintLayout>
@@ -139,7 +140,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toLeftOf="@+id/cl_locations_buttons"
             app:layout_constraintRight_toLeftOf="@+id/btn_details_locations"
-            android:text="ADD"/>
+            android:text="ADD"
+            android:onClick="callPlaceCreateActivity"/>
 
         <Button
             android:id="@+id/btn_details_locations"
@@ -147,7 +149,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintRight_toRightOf="@+id/cl_locations_buttons"
             app:layout_constraintLeft_toRightOf="@id/btn_add_locations"
-            android:text="Detail"/>
+            android:text="Detail"
+            android:onClick="callPlaceDetailsActivity"/>
 
     </android.support.constraint.ConstraintLayout>
 

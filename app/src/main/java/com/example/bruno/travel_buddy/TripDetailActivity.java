@@ -16,6 +16,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class TripDetailActivity extends AppCompatActivity {
+
+    static final int CREATE_BUDGET_REQUEST = 1;
+    static final int CREATE_PLACE_REQUEST = 2;
     TripListEngine engine_list;
     TextView tv_budget_initial;
     TextView tv_budget_actual;
@@ -23,6 +26,7 @@ public class TripDetailActivity extends AppCompatActivity {
     TextView tv_trip_date;
     TextView tv_trip_title;
     TextView tv_list_locations;
+    TextView tv_label_places;
     Button btn_cost_details;
     Trip trip;
 
@@ -53,9 +57,13 @@ public class TripDetailActivity extends AppCompatActivity {
         btn_cost_details = findViewById(R.id.btn_details_budget);
 
         tv_list_locations = (TextView) findViewById(R.id.tv_list_location);
+        tv_label_places = findViewById(R.id.tv_label_location);
 
         tv_trip_title.setText(trip.getTitle());
         tv_trip_date.setText(trip.getCombinedDate());
+
+        int places = trip.getPlace_list().size();
+        tv_label_places.setText("Locations to visit (" + (places - trip.countPlacesVisited()) + " / " + places + ")");
         tv_list_locations.setText(trip.getPlacesInLine());
 
         tv_budget_initial.setText(Double.toString(trip.getBudget_initial()));
@@ -67,10 +75,50 @@ public class TripDetailActivity extends AppCompatActivity {
 
     }
 
-    public void callBudgetDetailsActivty(View v){
-        //NEED TO WORK ON THIS
+    public void callBudgetDetailsActivity(View v){
         Intent intent = new Intent(v.getContext() , BudgetDetailsActivity.class);
         intent.putExtra("TRIP", trip);
-        startActivity(intent);
+        startActivityForResult(intent, CREATE_BUDGET_REQUEST);
+    }
+
+    public void callBudgetCreateActivity(View v){
+        Intent intent = new Intent(v.getContext() , NewBudgetActivity.class);
+        intent.putExtra("TRIP", trip);
+        startActivityForResult(intent, CREATE_BUDGET_REQUEST);
+        //startActivity(intent);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Check which request we're responding to
+        if (requestCode == CREATE_BUDGET_REQUEST || requestCode == CREATE_PLACE_REQUEST) {
+            // Make sure the request was successful
+            if (resultCode == RESULT_OK) {
+                trip = data.getParcelableExtra("TRIP");
+                refreshData();
+            }
+        }
+    }
+
+    public void refreshData(){
+        tv_trip_title.setText(trip.getTitle());
+        tv_trip_date.setText(trip.getCombinedDate());
+        tv_list_locations.setText(trip.getPlacesInLine());
+
+        tv_budget_initial.setText(Double.toString(trip.getBudget_initial()));
+        tv_budget_actual.setText(Double.toString(trip.getTotalCost()));
+        tv_budget_remaining.setText(Double.toString(trip.getRemainingBudget()));
+    }
+
+    public void callPlaceCreateActivity(View view) {
+        Intent intent = new Intent(view.getContext() , NewPlaceActivity.class);
+        intent.putExtra("TRIP", trip);
+        startActivityForResult(intent, CREATE_PLACE_REQUEST);
+    }
+
+    public void callPlaceDetailsActivity(View view) {
+        Intent intent = new Intent(view.getContext() , PlaceDetailsActivity.class);
+        intent.putExtra("TRIP", trip);
+        startActivityForResult(intent, CREATE_PLACE_REQUEST);
     }
 }
