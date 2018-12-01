@@ -42,8 +42,8 @@ public class TripListActivity extends AppCompatActivity {
     TripListEngine engine_list;
     RequestQueue requestQueue; // This is our requests queue to process our HTTP requests.
 
-    String baseUrl = "https://brunosbeltrame.000webhostapp.com/api/trip/read.php";  // This is the API base URL (GitHub API)
-    String url; // This will hold the full URL which will include the username entered in the etGitHubUser.
+    String baseUrl = "https://brunosbeltrame.000webhostapp.com/api/trip/readAll.php";
+    String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,7 +124,7 @@ public class TripListActivity extends AppCompatActivity {
                                 try {
                                     // For each repo, add a new line to our repo list.
 
-                                    JSONArray jsonArray = response.getJSONArray("records");
+                                    JSONArray jsonArray = response.getJSONArray("trips");
 
                                     for(int a = 0; a < jsonArray.length(); a++){
                                         JSONObject  jsonObj = jsonArray.getJSONObject(a);

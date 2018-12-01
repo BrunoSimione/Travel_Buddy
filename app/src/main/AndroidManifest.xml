@@ -33,14 +33,13 @@
             android:name=".BudgetDetailsActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".PlaceDetailsActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity android:name=".NewBudgetActivity" />
-        <activity android:name=".NewPlaceActivity"></activity>
+        <activity android:name=".NewPlaceActivity" />
+        <activity android:name=".NewTripActivity"></activity>
     </application>
 
 </manifest>

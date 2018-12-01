@@ -6,14 +6,17 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class BudgetListAdapter extends RecyclerView.Adapter<BudgetListAdapter.ViewHolder>{
     //TripListEngine listEngine;
     //int trip_id;
     List<Cost> costList;
+    private static DecimalFormat df2 = new DecimalFormat("0.##");
 
     public BudgetListAdapter(List<Cost> costs) {
         //this.listEngine = listEngine;
@@ -32,9 +35,29 @@ public class BudgetListAdapter extends RecyclerView.Adapter<BudgetListAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull final BudgetListAdapter.ViewHolder viewHolder, int i) {
         //Trip trip = listEngine.getTrip(trip_id);
+
+        double amount = costList.get(i).getAmount();
+
         viewHolder.tvBudgetName.setText(costList.get(i).getTitle());
         viewHolder.tvBudgetDate.setText(costList.get(i).getDate());
-        viewHolder.tvBudgetValue.setText(Double.toString(costList.get(i).getAmount()));
+        viewHolder.tvBudgetValue.setText("$ " + df2.format(amount));
+
+        String cat = costList.get(i).getCategory();
+        switch (cat){
+            case "1":
+                viewHolder.imgIcon.setImageResource(R.mipmap.ic_restaurant_icon);
+                break;
+            case "2":
+                viewHolder.imgIcon.setImageResource(R.mipmap.ic_shopping_icon);
+                break;
+            case "3":
+                viewHolder.imgIcon.setImageResource(R.mipmap.ic_leisure_icon);
+                break;
+            default:
+                viewHolder.imgIcon.setImageResource(R.mipmap.ic_restaurant_icon);
+                break;
+        }
+
 
         /*
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -60,12 +83,14 @@ public class BudgetListAdapter extends RecyclerView.Adapter<BudgetListAdapter.Vi
         TextView tvBudgetName;
         TextView tvBudgetDate;
         TextView tvBudgetValue;
+        ImageView imgIcon;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvBudgetName = itemView.findViewById(R.id.tv_budget_name);
             tvBudgetDate = itemView.findViewById(R.id.tv_budget_date);
-            tvBudgetValue= itemView.findViewById(R.id.tv_budget_value);
+            tvBudgetValue = itemView.findViewById(R.id.tv_budget_value);
+            imgIcon = itemView.findViewById(R.id.img_budget_icon);
         }
     }
 }

@@ -30,8 +30,8 @@ public class Trip implements Parcelable{
         this.cost_list = new ArrayList<>();
         this.place_list = new ArrayList<>();
 
-        createDummyCost(3);
-        createDummyPlaces(3);
+        //createDummyCost(3);
+        //createDummyPlaces(3);
     }
 
     protected Trip(Parcel in) {

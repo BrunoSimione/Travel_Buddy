@@ -32,7 +32,7 @@ public class LoginActivty extends AppCompatActivity {
         if (et_email.getText().toString().equals("a") && et_email.getText().toString().equals("a")){
 
             RotateAnimation rotateAnimation = new RotateAnimation(360, 0, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-            rotateAnimation.setDuration(5000);
+            rotateAnimation.setDuration(2000);
             iv_icon.startAnimation(rotateAnimation);
 
             //intent.putExtra("TRIP_ID", trip_ID);
@@ -43,7 +43,7 @@ public class LoginActivty extends AppCompatActivity {
                     Intent intent = new Intent(getBaseContext() , TripListActivity.class);
                     startActivity(intent);
                 }
-            }, 5000);
+            }, 2000);
 
         }
     }

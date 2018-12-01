@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
+
 public class TripDetailActivity extends AppCompatActivity {
 
     static final int CREATE_BUDGET_REQUEST = 1;
@@ -29,6 +31,7 @@ public class TripDetailActivity extends AppCompatActivity {
     TextView tv_label_places;
     Button btn_cost_details;
     Trip trip;
+    private static DecimalFormat df2 = new DecimalFormat("0.##");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,9 +69,12 @@ public class TripDetailActivity extends AppCompatActivity {
         tv_label_places.setText("Locations to visit (" + (places - trip.countPlacesVisited()) + " / " + places + ")");
         tv_list_locations.setText(trip.getPlacesInLine());
 
-        tv_budget_initial.setText(Double.toString(trip.getBudget_initial()));
-        tv_budget_actual.setText(Double.toString(trip.getTotalCost()));
-        tv_budget_remaining.setText(Double.toString(trip.getRemainingBudget()));
+        double bi = trip.getBudget_initial();
+        double ba = trip.getTotalCost();
+        double br = trip.getRemainingBudget();
+        tv_budget_initial.setText("$ " + df2.format(bi));
+        tv_budget_actual.setText("$ " + df2.format(ba));
+        tv_budget_remaining.setText("$ " + df2.format(br));
 
 
 

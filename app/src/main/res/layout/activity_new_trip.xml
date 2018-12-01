@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewTripActivity">
+
+    <EditText
+        android:id="@+id/et_trip_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/et_trip_date"
+        android:hint="Name/Title"
+        />
+
+    <EditText
+        android:id="@+id/et_trip_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_trip_title"
+        app:layout_constraintBottom_toTopOf="@id/et_trip_end_date"
+        android:hint="DD-MM-YYYY"
+        />
+
+    <EditText
+        android:id="@+id/et_trip_end_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_trip_date"
+        app:layout_constraintBottom_toTopOf="@id/et_trip_budget"
+        android:hint="DD-MM-YYYY"
+        />
+
+    <EditText
+        android:id="@+id/et_trip_budget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_trip_end_date"
+        app:layout_constraintBottom_toTopOf="@id/et_trip_location"
+        android:hint="Initial Budget"
+        />
+
+    <EditText
+        android:id="@+id/et_trip_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_trip_budget"
+        app:layout_constraintBottom_toTopOf="@id/et_trip_details"
+        android:hint="Location"
+        />
+
+    <EditText
+        android:id="@+id/et_trip_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_trip_location"
+        app:layout_constraintBottom_toTopOf="@id/btn_create_trip"
+        android:hint="Trip Details"
+        />
+
+    <Button
+        android:id="@+id/btn_create_trip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADD"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_place_details"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:onClick="createNewTrip"/>
+
+</android.support.constraint.ConstraintLayout>

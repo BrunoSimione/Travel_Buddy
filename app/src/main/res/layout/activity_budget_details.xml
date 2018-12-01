@@ -2,7 +2,8 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background_min">
 
     <TextView
         android:id="@+id/tv_budget_detail_title"
@@ -12,6 +13,7 @@
         android:textSize="26dp"
         android:layout_marginTop="10dp"
         android:gravity="center"
+        android:textColor="@android:color/white"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <android.support.constraint.ConstraintLayout
@@ -21,61 +23,80 @@
         app:layout_constraintTop_toBottomOf="@id/tv_budget_detail_title"
         android:layout_marginTop="20dp">
 
-        <TextView
-            android:id="@+id/tv_budget_detail_label_budget_initial"
+        <LinearLayout
+            android:id="@+id/leftColumnBudget"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Initial Budget"
-            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/rightColumnBudget"
+            android:gravity="right">
 
-            app:layout_constraintRight_toLeftOf="@id/tv_budget_detail_value_budget_initial"
-            app:layout_constraintLeft_toLeftOf="parent"/>
-        <TextView
-            android:id="@+id/tv_budget_detail_value_budget_initial"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Initial Value"
-            app:layout_constraintLeft_toRightOf="@id/tv_budget_detail_label_budget_initial"
-            app:layout_constraintRight_toRightOf="parent"/>
+            <TextView
+                android:id="@+id/tv_budget_detail_label_budget_initial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Initial Budget"
+                android:gravity="center"
+                style="@style/whiteDesignText"
+                />
 
-        <TextView
-            android:id="@+id/tv_budget_detail_label_budget_actual"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Actual Cost"
-            android:gravity="center"
-            app:layout_constraintTop_toBottomOf="@id/tv_budget_detail_label_budget_initial"
-            app:layout_constraintRight_toLeftOf="@id/tv_budget_detail_value_budget_actual"
-            app:layout_constraintLeft_toLeftOf="parent"/>
-        <TextView
-            android:id="@+id/tv_budget_detail_value_budget_actual"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Actual Value"
-            app:layout_constraintTop_toBottomOf="@id/tv_budget_detail_value_budget_initial"
-            app:layout_constraintLeft_toRightOf="@id/tv_budget_detail_label_budget_actual"
-            app:layout_constraintRight_toRightOf="parent"/>
+            <TextView
+                android:id="@+id/tv_budget_detail_label_budget_actual"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Actual Cost"
+                android:gravity="center"
+                style="@style/whiteDesignText"
+                />
 
-        <TextView
-            android:id="@+id/tv_budget_detail_label_budget_remaining"
+            <TextView
+                android:id="@+id/tv_budget_detail_label_budget_remaining"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Remaining Budget"
+                android:gravity="center"
+                style="@style/whiteDesignText"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rightColumnBudget"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Remaining Budget"
-            android:gravity="center"
-            app:layout_constraintTop_toBottomOf="@id/tv_budget_detail_label_budget_actual"
-            app:layout_constraintRight_toLeftOf="@id/tv_budget_detail_value_budget_remaining"
-            app:layout_constraintLeft_toLeftOf="parent"/>
-        <TextView
-            android:id="@+id/tv_budget_detail_value_budget_remaining"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Remaining Value"
-            app:layout_constraintTop_toBottomOf="@id/tv_budget_detail_value_budget_actual"
+            android:orientation="vertical"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/tv_budget_detail_label_budget_actual"/>
+            app:layout_constraintLeft_toRightOf="@+id/leftColumnBudget"
+            android:gravity="left">
+
+            <TextView
+                android:id="@+id/tv_budget_detail_value_budget_initial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Initial Value"
+                style="@style/whiteDesignText" />
+
+
+            <TextView
+                android:id="@+id/tv_budget_detail_value_budget_actual"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Actual Value"
+                style="@style/whiteDesignText"/>
+
+
+            <TextView
+                android:id="@+id/tv_budget_detail_value_budget_remaining"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Remaining Value"
+                style="@style/whiteDesignText"/>
+        </LinearLayout>
+
     </android.support.constraint.ConstraintLayout>
 
     <TextView
@@ -84,9 +105,10 @@
         android:layout_height="wrap_content"
         android:text="History"
         android:layout_marginTop="10dp"
-        android:textSize="18dp"
+        android:textSize="24dp"
         android:gravity="center"
         app:layout_constraintTop_toBottomOf="@+id/cl_budget_budget"
+        android:textColor="@android:color/white"
         />
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_budget_list"
@@ -102,6 +124,9 @@
         android:text="Add"
         app:layout_constraintTop_toBottomOf="@+id/rv_budget_list"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:onClick="callBudgetCreateActivity"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:onClick="callBudgetCreateActivity"
+        style="@style/newDesignButton"/>
 
 </android.support.constraint.ConstraintLayout>

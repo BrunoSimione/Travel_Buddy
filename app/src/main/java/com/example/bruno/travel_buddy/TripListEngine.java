@@ -59,6 +59,27 @@ public class TripListEngine {
             Trip t = new Trip(jsonObj.getInt("id") ,jsonObj.getString("title"), jsonObj.getString("location"), "", jsonObj.getString("start_date"),
                     jsonObj.getString("end_date"), 12000);
             this.trip_list.add(t);
+
+            JSONArray jsonPlaces = jsonObj.getJSONArray("places");
+
+            if(jsonPlaces != null && jsonPlaces.length() > 0){
+                for(int a = 0; a < jsonPlaces.length(); a++){
+                    JSONObject jsonObjCost = jsonPlaces.getJSONObject(a);
+                    Place p = new Place(jsonObjCost.getString("name"), jsonObjCost.getString("date"), jsonObjCost.getString("category"), jsonObjCost.getString("location"), jsonObjCost.getString("details"), false);
+                    t.getPlace_list().add(p);
+                }
+            }
+
+            JSONArray jsonCosts = jsonObj.getJSONArray("costs");
+
+            if(jsonCosts != null && jsonCosts.length() > 0){
+                for(int a = 0; a < jsonCosts.length(); a++){
+                    JSONObject jsonObjCost = jsonCosts.getJSONObject(a);
+                    Cost c = new Cost(jsonObjCost.getString("name"), jsonObjCost.getString("date"), jsonObjCost.getDouble("amount"), jsonObjCost.getString("category"), jsonObjCost.getInt("rate"), jsonObjCost.getString("details"));
+                    t.getCost_list().add(c);
+                }
+            }
+
             Log.e("EngineJSON", "Added");
 
         } catch (JSONException e) {

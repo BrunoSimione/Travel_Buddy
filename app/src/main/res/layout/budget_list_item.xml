@@ -7,39 +7,67 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="8dp">
 
-
-        <TextView
-            android:id="@+id/tv_budget_date"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="No Date"
-            android:textSize="24dp"
-            android:layout_marginRight="10dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            />
+            android:orientation="vertical"
+            app:layout_constraintLeft_toLeftOf="parent">
 
-        <TextView
-            android:id="@+id/tv_budget_name"
+            
+
+            <TextView
+                android:id="@+id/tv_budget_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Budget Name"
+                android:textSize="24dp"
+                android:maxLength="20"
+                android:layout_marginRight="10dp"
+                android:textColor="@android:color/white"
+                />
+
+            <TextView
+                android:id="@+id/tv_budget_date"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:hint="No Date"
+                android:textSize="16dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center_vertical"
+                android:textColor="@android:color/white"/>
+        </LinearLayout>
+        
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Trip Name"
-            android:textSize="24dp"
-            android:maxLength="20"
-            android:layout_marginRight="10dp"
-            app:layout_constraintLeft_toRightOf="@id/tv_budget_date"
-            app:layout_constraintRight_toLeftOf="@id/tv_budget_value"
-            />
+            android:orientation="vertical"
+            app:layout_constraintRight_toRightOf="parent">
 
-        <TextView
-            android:id="@+id/tv_budget_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Trip Value"
-            android:textSize="24dp"
-            app:layout_constraintRight_toRightOf="parent"
-            />
+            <TextView
+                android:id="@+id/tv_budget_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Trip Value"
+                android:textSize="24dp"
+                android:textColor="@android:color/white"
+                android:gravity="right"
+                android:layout_gravity="right"
+                app:layout_constraintRight_toRightOf="parent"
+                />
+            
+            <ImageView
+                android:id="@+id/img_budget_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:tint="@android:color/white"
+                android:layout_gravity="right"/>
+            
+        </LinearLayout>
+        
     </android.support.constraint.ConstraintLayout>
 
 </LinearLayout>

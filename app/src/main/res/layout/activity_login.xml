@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginActivty"
-    android:background="#DBFFF9">
+    android:background="@drawable/background_min">
 
     <ImageView
         android:layout_width="100dp"
@@ -29,6 +29,7 @@
         android:maxLines="1"
         android:inputType="text"
         android:maxLength="30"
+        style="@style/whiteDesignText"
         />
 
     <EditText
@@ -42,6 +43,7 @@
         android:inputType="textPassword"
         android:maxLines="1"
         android:maxLength="30"
+        style="@style/whiteDesignText"
         />
 
     <Button
@@ -53,6 +55,7 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="20dp"
         android:onClick="loginClicked"
+        style="@style/newDesignButton"
         />
 
 </android.support.constraint.ConstraintLayout>

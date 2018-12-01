@@ -41,7 +41,7 @@ public class BudgetDetailsActivity extends AppCompatActivity{
         //engine_list.createDummyData(10);
 
         title.setText(trip.getTitle() + " Budget");
-        initial_cost.setText(Double.toString(trip.getBudget_initial()));
+        initial_cost.setText(Double.toString(trip.getBudget_initial()).toString());
         actual_cost.setText(Double.toString(trip.getTotalCost()));
         remaining_cost.setText(Double.toString(trip.getRemainingBudget()));
 
