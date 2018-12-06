@@ -42,6 +42,7 @@ public class TripListActivity extends AppCompatActivity {
     TripListEngine engine_list;
     RequestQueue requestQueue; // This is our requests queue to process our HTTP requests.
 
+    int USER_ID;
     String baseUrl = "https://brunosbeltrame.000webhostapp.com/api/trip/readAll.php";
     String url;
 
@@ -61,12 +62,20 @@ public class TripListActivity extends AppCompatActivity {
             }
         });
 
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            //String value = extras.getString("TRIP_ID");
+            USER_ID = extras.getInt("USER_ID");
+            //Toast.makeText(this,"ID " + trip.getId(), Toast.LENGTH_SHORT).show();
+            //The key argument here must match that used in the other activity
+        }
+
         requestQueue = Volley.newRequestQueue(this); // This setups up a new request queue which we will need to make HTTP requests.
         rv_list = findViewById(R.id.rv_trip_list);
         rv_list.setLayoutManager(new LinearLayoutManager(this));
         engine_list = new TripListEngine();
         //engine_list.createDummyData(10);
-        getRepoList(1);
+        getRepoList(USER_ID);
         //engine_list.createDummyData2(5);
 
         Handler handler = new Handler();

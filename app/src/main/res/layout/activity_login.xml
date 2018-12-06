@@ -47,6 +47,7 @@
         />
 
     <Button
+        android:id="@+id/btn_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
@@ -57,5 +58,19 @@
         android:onClick="loginClicked"
         style="@style/newDesignButton"
         />
+
+
+    <Button
+        android:id="@+id/btn_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign-Up"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:onClick="newUserClicked"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        />
+
 
 </android.support.constraint.ConstraintLayout>

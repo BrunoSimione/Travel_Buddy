@@ -39,7 +39,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".NewBudgetActivity" />
         <activity android:name=".NewPlaceActivity" />
-        <activity android:name=".NewTripActivity"></activity>
+        <activity android:name=".NewTripActivity" />
+        <activity android:name=".NewUserActivity"></activity>
     </application>
 
 </manifest>
