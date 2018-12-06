@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NewPlaceActivity">
+    tools:context=".NewPlaceActivity"
+    android:background="@drawable/background_min">
 
     <EditText
         android:id="@+id/et_place_title"
@@ -14,6 +15,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/et_place_date"
+        android:layout_marginHorizontal="10dp"
         android:hint="Name/Title"
         />
 
@@ -25,6 +27,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_place_title"
         app:layout_constraintBottom_toTopOf="@id/et_place_location"
+        android:layout_marginHorizontal="10dp"
         android:hint="DD-MM-YYYY"
         />
 
@@ -36,6 +39,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_place_date"
         app:layout_constraintBottom_toTopOf="@id/ddl_place_category"
+        android:layout_marginHorizontal="10dp"
         android:hint="Location"
         />
 
@@ -47,6 +51,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_place_location"
         app:layout_constraintBottom_toTopOf="@id/et_place_details"
+        style="@style/Widget.AppCompat.Spinner.DropDown"
         ></Spinner>
 
     <EditText
@@ -58,6 +63,7 @@
         app:layout_constraintTop_toBottomOf="@id/ddl_place_category"
         app:layout_constraintBottom_toTopOf="@id/btn_create_place"
         android:hint="Extra Details"
+        android:layout_marginHorizontal="10dp"
         />
 
     <Button
@@ -69,6 +75,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_place_details"
         app:layout_constraintBottom_toBottomOf="parent"
+        style="@style/newDesignButton"
         android:onClick="createNewPlace"/>
 
 </android.support.constraint.ConstraintLayout>

@@ -65,7 +65,7 @@ public class TripListEngine {
             if(jsonPlaces != null && jsonPlaces.length() > 0){
                 for(int a = 0; a < jsonPlaces.length(); a++){
                     JSONObject jsonObjCost = jsonPlaces.getJSONObject(a);
-                    Place p = new Place(jsonObjCost.getString("name"), jsonObjCost.getString("date"), jsonObjCost.getString("category"), jsonObjCost.getString("location"), jsonObjCost.getString("details"), false);
+                    Place p = new Place(jsonObjCost.getString("name"), jsonObjCost.getString("date"), jsonObjCost.getString("category"), jsonObjCost.getString("location"), jsonObjCost.getString("details"), jsonObjCost.getInt("visited"));
                     t.getPlace_list().add(p);
                 }
             }

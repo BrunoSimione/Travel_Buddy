@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NewTripActivity">
+    tools:context=".NewTripActivity"
+    android:background="@drawable/background_min">
 
     <EditText
         android:id="@+id/et_trip_title"
@@ -15,6 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/et_trip_date"
         android:hint="Name/Title"
+        android:layout_marginHorizontal="10dp"
         />
 
     <EditText
@@ -25,6 +27,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_trip_title"
         app:layout_constraintBottom_toTopOf="@id/et_trip_end_date"
+        android:layout_marginHorizontal="10dp"
         android:hint="DD-MM-YYYY"
         />
 
@@ -37,6 +40,7 @@
         app:layout_constraintTop_toBottomOf="@id/et_trip_date"
         app:layout_constraintBottom_toTopOf="@id/et_trip_budget"
         android:hint="DD-MM-YYYY"
+        android:layout_marginHorizontal="10dp"
         />
 
     <EditText
@@ -48,6 +52,7 @@
         app:layout_constraintTop_toBottomOf="@id/et_trip_end_date"
         app:layout_constraintBottom_toTopOf="@id/et_trip_location"
         android:hint="Initial Budget"
+        android:layout_marginHorizontal="10dp"
         />
 
     <EditText
@@ -59,6 +64,7 @@
         app:layout_constraintTop_toBottomOf="@id/et_trip_budget"
         app:layout_constraintBottom_toTopOf="@id/et_trip_details"
         android:hint="Location"
+        android:layout_marginHorizontal="10dp"
         />
 
     <EditText
@@ -70,6 +76,8 @@
         app:layout_constraintTop_toBottomOf="@id/et_trip_location"
         app:layout_constraintBottom_toTopOf="@id/btn_create_trip"
         android:hint="Trip Details"
+        android:lines="4"
+        android:layout_marginHorizontal="10dp"
         />
 
     <Button
@@ -81,6 +89,8 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_place_details"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="10dp"
+        style="@style/newDesignButton"
         android:onClick="createNewTrip"/>
 
 </android.support.constraint.ConstraintLayout>

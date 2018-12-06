@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Travel_Buddy</string>
+    <string name="app_name">Travel Buddy</string>
     <string name="action_settings">Settings</string>
 
     <string-array name="budget_categories_array">
@@ -13,4 +13,5 @@
         <item>Museum</item>
         <item>Park</item>
     </string-array>
+    <string name="title_activity_test">TestActivity</string>
 </resources>

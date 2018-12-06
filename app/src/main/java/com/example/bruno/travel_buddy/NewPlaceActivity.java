@@ -48,7 +48,7 @@ public class NewPlaceActivity extends AppCompatActivity {
         String location = placeLocation.getText().toString();
         String category = ddlCategories.getSelectedItem().toString();
         String details = placeDetails.getText().toString();
-        Place p = new Place(title, date, category, details, location, false);
+        Place p = new Place(title, date, category, details, location, 0);
         trip.getPlace_list().add(p);
 
         Intent returnIntent = getIntent();

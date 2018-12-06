@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -26,7 +27,6 @@ public class TripDetailActivity extends AppCompatActivity {
     TextView tv_budget_actual;
     TextView tv_budget_remaining;
     TextView tv_trip_date;
-    TextView tv_trip_title;
     TextView tv_list_locations;
     TextView tv_label_places;
     Button btn_cost_details;
@@ -36,11 +36,16 @@ public class TripDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_trip_detail);
+        //setContentView(R.layout.activity_trip_detail);
+        setContentView(R.layout.activity_trip_detail_coord);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             //String value = extras.getString("TRIP_ID");
             trip = extras.getParcelable("TRIP");
+            getSupportActionBar().setTitle(trip.getTitle());
             Toast.makeText(this,"ID " + trip.getId(), Toast.LENGTH_SHORT).show();
             //The key argument here must match that used in the other activity
         }
@@ -50,7 +55,7 @@ public class TripDetailActivity extends AppCompatActivity {
 
         //engine_list.createDummyData(10);
 
-        tv_trip_title = (TextView) findViewById(R.id.tv_trip_detail_title);
+        //tv_trip_title = (TextView) findViewById(R.id.tv_trip_detail_title);
         tv_trip_date = (TextView) findViewById(R.id.tv_trip_detail_date);
 
         tv_budget_initial = (TextView) findViewById(R.id.tv_trip_detail_value_budget_initial);
@@ -62,7 +67,7 @@ public class TripDetailActivity extends AppCompatActivity {
         tv_list_locations = (TextView) findViewById(R.id.tv_list_location);
         tv_label_places = findViewById(R.id.tv_label_location);
 
-        tv_trip_title.setText(trip.getTitle());
+        //tv_trip_title.setText(trip.getTitle());
         tv_trip_date.setText(trip.getCombinedDate());
 
         int places = trip.getPlace_list().size();
@@ -75,9 +80,6 @@ public class TripDetailActivity extends AppCompatActivity {
         tv_budget_initial.setText("$ " + df2.format(bi));
         tv_budget_actual.setText("$ " + df2.format(ba));
         tv_budget_remaining.setText("$ " + df2.format(br));
-
-
-
 
     }
 
@@ -107,7 +109,8 @@ public class TripDetailActivity extends AppCompatActivity {
     }
 
     public void refreshData(){
-        tv_trip_title.setText(trip.getTitle());
+        //tv_trip_title.setText(trip.getTitle());
+        getSupportActionBar().setTitle(trip.getTitle());
         tv_trip_date.setText(trip.getCombinedDate());
         tv_list_locations.setText(trip.getPlacesInLine());
 
@@ -126,5 +129,32 @@ public class TripDetailActivity extends AppCompatActivity {
         Intent intent = new Intent(view.getContext() , PlaceDetailsActivity.class);
         intent.putExtra("TRIP", trip);
         startActivityForResult(intent, CREATE_PLACE_REQUEST);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_new_cost:
+                // User chose the "Settings" item, show the app settings UI...
+                return true;
+
+            case R.id.action_new_place:
+                // User chose the "Favorite" action, mark the current item
+                // as a favorite...
+                return true;
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.trip_details_menu, menu);
+        return true;
     }
 }

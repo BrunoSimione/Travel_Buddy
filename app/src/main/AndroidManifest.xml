@@ -40,7 +40,11 @@
         <activity android:name=".NewBudgetActivity" />
         <activity android:name=".NewPlaceActivity" />
         <activity android:name=".NewTripActivity" />
-        <activity android:name=".NewUserActivity"></activity>
+        <activity android:name=".NewUserActivity" />
+        <activity
+            android:name=".TestActivity"
+            android:label="@string/title_activity_test"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

@@ -11,13 +11,18 @@ public class Place implements Parcelable{
     private String location;
     private boolean visited;
 
-    public Place(String title, String date, String category, String details, String location, boolean visited) {
+    public Place(String title, String date, String category, String details, String location, int visited) {
         this.title = title;
         this.date = date;
         this.category = category;
         this.details = details;
         this.location = location;
-        this.visited = visited;
+        if(visited == 1){
+            this.visited = true;
+        }else{
+            this.visited = false;
+        }
+
     }
 
     //PARCELABLE METHODS

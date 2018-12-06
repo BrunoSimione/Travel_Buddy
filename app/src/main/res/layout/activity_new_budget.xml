@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NewBudgetActivity">
+    tools:context=".NewBudgetActivity"
+    android:background="@drawable/background_min">
 
     <EditText
         android:id="@+id/et_budget_title"
@@ -14,6 +15,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/et_budget_date"
+        android:layout_marginHorizontal="10dp"
         android:hint="Name/Title"
         />
 
@@ -25,6 +27,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_budget_title"
         app:layout_constraintBottom_toTopOf="@id/et_budget_amount"
+        android:layout_marginHorizontal="10dp"
         android:hint="DD-MM-YYYY"
         />
 
@@ -36,6 +39,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_budget_date"
         app:layout_constraintBottom_toTopOf="@id/ddl_budget_category"
+        android:layout_marginHorizontal="10dp"
         android:hint="1234.56"
         />
 
@@ -47,6 +51,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_budget_amount"
         app:layout_constraintBottom_toTopOf="@id/et_budget_details"
+        style="@style/Widget.AppCompat.Spinner.DropDown"
         ></Spinner>
 
     <EditText
@@ -58,6 +63,7 @@
         app:layout_constraintTop_toBottomOf="@id/ddl_budget_category"
         app:layout_constraintBottom_toTopOf="@id/btn_create_budget"
         android:hint="Extra Details"
+        android:layout_marginHorizontal="10dp"
         />
 
     <Button
@@ -69,6 +75,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_budget_details"
         app:layout_constraintBottom_toBottomOf="parent"
+        style="@style/newDesignButton"
         android:onClick="createNewBudget"/>
 
 </android.support.constraint.ConstraintLayout>

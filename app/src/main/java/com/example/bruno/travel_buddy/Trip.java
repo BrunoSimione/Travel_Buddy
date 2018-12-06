@@ -148,7 +148,9 @@ public class Trip implements Parcelable{
     public String getPlacesInLine(){
         String line = "";
         for(int i = 0; i < this.place_list.size(); i++){
+            if(!this.place_list.get(i).isVisited())
                 line += this.place_list.get(i).getTitle() + "\n";
+
         }
         System.out.println(line);
         return line;
@@ -164,6 +166,7 @@ public class Trip implements Parcelable{
         return count;
     }
 
+    /*
     public void createDummyCost(int index){
         for(int i=1; i<=index; i++){
             Cost c = new Cost("Cost" + i, "08-11-2018", 120.00 + i, "Restaurant", 2, "");
@@ -178,6 +181,8 @@ public class Trip implements Parcelable{
             this.place_list.add(p);
         }
     }
+
+    */
 
     @Override
     public int describeContents() {
