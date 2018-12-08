@@ -9,4 +9,9 @@
     android:id="@+id/action_new_cost"
     android:title="New Cost"
     app:showAsAction="never"></item>
+    <item
+        android:id="@+id/action_weather"
+        android:title="Weather"
+        android:icon="@mipmap/ic_weather_icon"
+        app:showAsAction="always"></item>
 </menu>

@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Place implements Parcelable{
+    private int id;
     private String title;
     private String date;
     private String category;
@@ -11,7 +12,8 @@ public class Place implements Parcelable{
     private String location;
     private boolean visited;
 
-    public Place(String title, String date, String category, String details, String location, int visited) {
+    public Place(int id, String title, String date, String category, String details, String location, int visited) {
+        this.id = id;
         this.title = title;
         this.date = date;
         this.category = category;
@@ -45,6 +47,7 @@ public class Place implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.id);
         dest.writeString(this.title);
         dest.writeString(this.date);
         dest.writeString(this.category);
@@ -54,6 +57,7 @@ public class Place implements Parcelable{
     }
 
     public Place(Parcel in){
+        this.id = in.readInt();
         this.title = in.readString();
         this.date = in.readString();
         this.category = in.readString();
@@ -63,6 +67,15 @@ public class Place implements Parcelable{
     }
 
     //GETTERS ASN SETTERS
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -106,6 +119,15 @@ public class Place implements Parcelable{
     public boolean isVisited() {
         return this.visited;
     }
+
+    public int isVisitedInt() {
+        int x = 0;
+        if(this.visited){
+            x = 1;
+        }
+        return x;
+    }
+
 
     public void setVisited(boolean visited) {
         this.visited = visited;

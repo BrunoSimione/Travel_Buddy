@@ -68,6 +68,7 @@ public class LoginActivty extends AppCompatActivity {
                         Intent intent = new Intent(getBaseContext() , TripListActivity.class);
                         intent.putExtra("USER_ID", USER_ID);
                         startActivity(intent);
+                        finish();
                     }
 
                 }

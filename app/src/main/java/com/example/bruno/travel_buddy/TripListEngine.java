@@ -12,6 +12,7 @@ import java.util.List;
 
 public class TripListEngine {
     private List<Trip> trip_list;
+    private int user_id;
 
     public TripListEngine() {
         this.trip_list = new ArrayList<>();
@@ -53,6 +54,14 @@ public class TripListEngine {
     }
     */
 
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
+
     public void addTripJson(JSONObject jsonObj){
 
         try {
@@ -65,7 +74,7 @@ public class TripListEngine {
             if(jsonPlaces != null && jsonPlaces.length() > 0){
                 for(int a = 0; a < jsonPlaces.length(); a++){
                     JSONObject jsonObjCost = jsonPlaces.getJSONObject(a);
-                    Place p = new Place(jsonObjCost.getString("name"), jsonObjCost.getString("date"), jsonObjCost.getString("category"), jsonObjCost.getString("location"), jsonObjCost.getString("details"), jsonObjCost.getInt("visited"));
+                    Place p = new Place(jsonObjCost.getInt("id"),jsonObjCost.getString("name"), jsonObjCost.getString("date"), jsonObjCost.getString("category"),  jsonObjCost.getString("details"), jsonObjCost.getString("location"), jsonObjCost.getInt("visited"));
                     t.getPlace_list().add(p);
                 }
             }

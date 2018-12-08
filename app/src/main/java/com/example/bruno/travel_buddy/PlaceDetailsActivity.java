@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -45,7 +46,7 @@ public class PlaceDetailsActivity extends AppCompatActivity{
 
         rv_place_list = findViewById(R.id.rv_place_list);
         rv_place_list.setLayoutManager(new LinearLayoutManager(this));
-        adapter_list = new PlaceListAdapter(trip.getPlace_list());
+        adapter_list = new PlaceListAdapter(trip.getPlace_list(), this);
         rv_place_list.setAdapter(adapter_list);
 
         sv = findViewById(R.id.searchPlace);
@@ -87,13 +88,25 @@ public class PlaceDetailsActivity extends AppCompatActivity{
         title.setText(trip.getTitle() + " Places");
         count.setText("( " + trip.countPlacesVisited() + " / " + trip.getPlace_list().size() + ")");
 
-        /*
-        //adapter_list = new BudgetListAdapter(trip);
-        adapter_list.notifyItemInserted(trip.getCost_list().size()-1);
-        adapter_list.notifyItemRangeChanged(0, trip.getCost_list().size());
-        adapter_list.notifyDataSetChanged();
-        //rv_budget_list.setAdapter(adapter_list);
-        */
+        adapter_list = new PlaceListAdapter(trip.getPlace_list(), this);
+        rv_place_list.setAdapter(adapter_list);
+
     }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        refreshData();
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent returnIntent = getIntent();
+        returnIntent.putExtra("TRIP",trip);
+        setResult(RESULT_OK,returnIntent);
+        finish();
+    }
+
 
 }

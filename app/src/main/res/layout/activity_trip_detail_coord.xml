@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TripListActivity"
-    android:background="@drawable/background_min">
+    tools:context=".TripDetailActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -21,6 +20,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_trip_list" />
+    <include layout="@layout/activity_trip_detail" />
+
 
 </android.support.design.widget.CoordinatorLayout>

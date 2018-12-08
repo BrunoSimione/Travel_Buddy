@@ -41,6 +41,7 @@ public class TripListActivity extends AppCompatActivity {
     RecyclerView.Adapter adapter_list;
     TripListEngine engine_list;
     RequestQueue requestQueue; // This is our requests queue to process our HTTP requests.
+    static final int CREATE_TRIP_REQUEST = 3;
 
     int USER_ID;
     String baseUrl = "https://brunosbeltrame.000webhostapp.com/api/trip/readAll.php";
@@ -53,14 +54,6 @@ public class TripListActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -74,6 +67,7 @@ public class TripListActivity extends AppCompatActivity {
         rv_list = findViewById(R.id.rv_trip_list);
         rv_list.setLayoutManager(new LinearLayoutManager(this));
         engine_list = new TripListEngine();
+        engine_list.setUser_id(USER_ID);
         //engine_list.createDummyData(10);
         getRepoList(USER_ID);
         //engine_list.createDummyData2(5);
@@ -105,7 +99,9 @@ public class TripListActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            Intent intent = new Intent(getBaseContext() , LoginActivty.class);
+            startActivity(intent);
+            finish();
         }
 
         return super.onOptionsItemSelected(item);
@@ -167,6 +163,20 @@ public class TripListActivity extends AppCompatActivity {
         // Add the request we just defined to our request queue.
         // The request queue will automatically handle the request as soon as it can.
         requestQueue.add(arrReq);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Check which request we're responding to
+        if (requestCode == CREATE_TRIP_REQUEST ) {
+            // Make sure the request was successful
+            if (resultCode == RESULT_OK) {
+                Trip t = data.getParcelableExtra("NEW_TRIP");
+                engine_list.getTrip_list().add(t);
+                adapter_list = new TripListAdapter(engine_list);
+                rv_list.setAdapter(adapter_list);
+            }
+        }
     }
 
 }

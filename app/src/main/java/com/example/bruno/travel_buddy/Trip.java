@@ -19,6 +19,7 @@ public class Trip implements Parcelable{
     private List<Cost> cost_list;
     private List<Place> place_list;
 
+
     public Trip(int id, String title, String location, String details, String date_start, String date_end, double budget_initial) {
         this.id = id;
         this.title = title;
@@ -166,6 +167,14 @@ public class Trip implements Parcelable{
         return count;
     }
 
+    public String getDateDB(String date){
+        String d = date.substring(0, 2);
+        String m = date.substring(3, 5);
+        String y = date.substring(6, 10);
+
+        return (y + "-" + m + "-" + d);
+    }
+
     /*
     public void createDummyCost(int index){
         for(int i=1; i<=index; i++){
@@ -201,4 +210,5 @@ public class Trip implements Parcelable{
         dest.writeTypedList(cost_list);
         dest.writeTypedList(place_list);
     }
+
 }

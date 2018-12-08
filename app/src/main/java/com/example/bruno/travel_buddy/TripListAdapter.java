@@ -59,6 +59,7 @@ public class TripListAdapter extends RecyclerView.Adapter<TripListAdapter.ViewHo
                 //Toast.makeText(viewHolder.itemView.getContext(), "Item Clicked: " + itemPosition, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(viewHolder.itemView.getContext() , TripDetailActivity.class);
                 intent.putExtra("TRIP", listEngine.getTrip(itemPosition));
+                intent.putExtra("USER_ID", listEngine.getUser_id());
                 viewHolder.itemView.getContext().startActivity(intent);
             }
         });
